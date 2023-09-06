@@ -2,18 +2,25 @@
 
 /** Sort a given array of numbers using the bubble sort algorithm. */
 function bubbleSort(array) {
+    const len = array.length;
 
-    for (let i = 0; i < array.length - 1; i++) {
-        const curr = array[i];
-        const next = array[i + 1];
+    for (let i = 1; i < len; i++) {
+        let hasSwitched = false;
 
-        // Switch current value and the next
-        if (curr > next) {
-            array[i + 1] = curr;
-            array[i] = next;
+        for (let j = 0; j < len - i; j++) {
+            const curr = array[j];
+            const next = array[j + 1];
+
+            // Switch current value and the next
+            if (curr > next) {
+                array[j + 1] = curr;
+                array[j] = next;
+                hasSwitched = true;
+            }
         }
 
-
+        // Optimization: array is sorted if no switches occurred in inner loop
+        if (!hasSwitched) break;
     }
 
     return array;
