@@ -38,7 +38,14 @@ function merge(arr1, arr2) {
 
 /** Sort and return the given array of numbers using the merge sort algorithm. */
 function mergeSort(array) {
+    // Base case: array has length 1 or less
+    if (array.length <= 1) return array;
 
+    const midIdx = Math.floor((array.length / 2));
+    const leftHalf = array.slice(0, midIdx);
+    const rightHalf = array.slice(midIdx);
+
+    return merge(mergeSort(leftHalf), mergeSort(rightHalf));
 }
 
 
